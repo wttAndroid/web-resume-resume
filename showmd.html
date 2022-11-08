@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Prism代码语法高亮</title>
+
+  <!--<link href="https://cdn.bootcss.com/prism/1.25.0/themes/prism-okaidia.css" rel="stylesheet">-->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+  <link href="/css/prism.css" rel="stylesheet">
+  <link href="/css/prism-line-numbers.css" rel="stylesheet">
+  <script src="/js/marked.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/prism.js"></script>
+  <script src="/js/jquery.min.js"></script>
+
+  <style>
+    #content {
+      width: 21cm;
+      min-height: 29.7cm;
+      padding: 2cm;
+      margin: 1cm auto;
+      border: 1px #D3D3D3 solid;
+      border-radius: 5px;
+      background: white;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    mark {
+      font-family: 宋体, "Courier New";
+      background-color: #66FF33;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+      font-family: "Arial", "Microsoft YaHei";
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    h3,
+    h4 {
+      text-align: left;
+      font-family: "Arial", "楷体";
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    figure {
+      width: 19cm;
+      max-width: 19cm;
+      text-align: center;
+      text-indent: 0em;
+    }
+
+    figure img {
+      height: auto;
+      width: auto;
+      max-width: 100%;
+    }
+
+    figure table {
+      height: auto;
+      width: auto;
+      max-width: 100%;
+    }
+
+    p {
+      font-family: 宋体, "verdana";
+      text-indent: 2em;
+      line-height: 1.4em;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li:before {
+      content: "\f00c";
+      /* FontAwesome Unicode */
+      font-family: FontAwesome;
+      display: inline-block;
+      margin-left: -0.3em;
+      /* same as padding-left set on li */
+      width: 1.5em;
+      /* same as padding-left set on li */
+    }
+
+    li {
+      text-indent: -1em;
+      padding-left: 2cm;
+      font-family: 宋体, "verdana";
+      list-style-position: outside;
+      line-height: 1.4em;
+    }
+
+    mark {
+      background-color: #66FF33;
+    }
+
+    h5 {
+      font-family: "Arial", "楷体";
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    table.tableStyle {
+      font-family: verdana, arial, sans-serif;
+      font-size: 11px;
+      color: #333333;
+      border: 1px #999999;
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+
+    table.tableStyle th {
+      background: #C7EDCC;
+      padding: 8px;
+      border: 1px solid #999999;
+    }
+
+    table.tableStyle td {
+      background: #fffae0;
+      padding: 8px;
+      border: 1px solid #999999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="content"></div>
+
+  <script>
+    function GetQueryValue(queryName) {
+      let reg = new RegExp("(^|&)" + queryName + "=([^&]*)(&|$)", "i");
+      let r = window.location.search.substr(1).match(reg);
+      if (r != null) {
+        return decodeURI(r[2]);
+      } else {
+        return null;
+      }
+    }
+
+    // 向服务器发送请求
+    $.ajax({
+      type: "get",
+      url: GetQueryValue("mdfile"),
+      async: true,
+      dataType: "text",
+      success: function (data) {
+        data = data.replace(/```mssql/g, "```sql");
+        data = data.replace(/```mysql/g, "```sql");
+
+        let ht = marked(data);
+        ht = ht.replace(/<table/g, "<table class='tableStyle'");
+
+        document.getElementById('content').innerHTML = ht.replace(/<pre/g, "<pre class='line-numbers'");
+
+        $('#content code').map(function () {
+          Prism.highlightElement(this);
+        });
+
+        $("[class |='line-numbers language']").dblclick(function () {
+          const oInput = document.createElement('textarea');
+          // 把文字放进input中，供复制
+          oInput.value = $(this).text();
+          document.body.appendChild(oInput);
+          // 选中创建的input
+          oInput.select();
+          // 执行复制方法， 该方法返回bool类型的结果，告诉我们是否复制成功
+          const copyResult = document.execCommand('copy')
+          // 操作中完成后 从Dom中删除创建的input
+          document.body.removeChild(oInput)
+          // 根据返回的复制结果 给用户不同的提示
+          if (copyResult) {
+            //alert('DDL已复制到粘贴板')
+          } else {
+            alert('复制失败')
+          }
+        });
+      }
+    });
+  </script>
+  <hr>
+  <p><a href="javascript:history.go(-1)">返回</a></p>
+
+</body>
+
+</html>

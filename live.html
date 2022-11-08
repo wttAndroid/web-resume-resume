@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求职简历</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <script src="./js/jq.js"></script>
+  <link rel="stylesheet" href="./css/live.css">
+</head>
+
+<body>
+  <canvas class="canvas-wrap" id="triangle-lost-in-space" resize="true"></canvas>
+
+  <!-- loadding -->
+  <div class="lodding-wrap">
+    <div class="loadding-div"></div>
+  </div>
+
+  <div class="box">
+    <!-- 顶部栏 -->
+    <div class="header borderafter">
+      <!-- 返回按钮 -->
+      <a style="position: absolute;left:50px;" href="javascript:history.back()">
+        <svg t="1649246285004" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          p-id="3737" width="20" height="20">
+          <path
+            d="M98 468.9l322.8-322.8v184.4C743.6 376.7 881.9 607.3 928 837.8 812.7 676.4 651.3 602.6 420.8 602.6v189.1L98 468.9z"
+            p-id="3738" fill="#254665"></path>
+        </svg>
+      </a>
+
+      <div class="col">
+        <span>个人简历</span>
+        <!-- 右边操作栏 -->
+        <div class="header-right">
+          <!-- 按钮 -->
+          <div class="min_menu-wrap" id="minmenu">
+            <span class="min_menu"></span>
+          </div>
+          <!-- 列表 -->
+          <div class="menu_list">
+            <!-- 栏目 -->
+            <ul class="header-nav">
+              <li><a href="./index2.html">主页</a></li>
+              <li><a href="./home.html">项目</a></li>
+              <li><a href="./resume.html">经验</a></li>
+              <li><a href="./contact.html">联系</a></li>
+              <li><a href="./blog.html">博客</a></li>
+              <li class="active"><a href="./live.html">其他</a></li>
+            </ul>
+            <!-- 开关灯 -->
+            <span class="kaig-bottm">
+              <svg t="1649159647627" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="2250" width="15" height="15">
+                <path
+                  d="M1008.535135 710.670332l-70.446388 116.386904a112.099975 112.099975 0 0 1-140.572857 43.829042l-69.422645-17.083729c-5.502624 3.1992-11.133217 6.3984-16.763809 9.341665l-18.299425 62.896276C687.335435 981.514621 639.4754 1023.744064 582.657604 1023.744064H441.764828c-56.817796 0-104.677831-42.293427-110.308423-97.703574l-18.299425-62.896276a422.166458 422.166458 0 0 1-16.827793-9.341665l-69.614597 17.083729a112.163959 112.163959 0 0 1-140.508873-43.893026L15.631361 710.542364a107.493127 107.493127 0 0 1 32.43989-144.731817L96.251206 518.910272a410.649338 410.649338 0 0 1 0-14.204448l-48.179955-46.836291a107.365159 107.365159 0 0 1-32.375906-144.731817l70.190452-116.450888a112.099975 112.099975 0 0 1 140.572857-43.893026l69.550612 17.083729c5.566608-3.1992 11.133217-6.3984 16.827794-9.341665l18.299425-62.896276C336.831061 42.229443 384.691096 0 441.508892 0H582.529636c56.817796 0 104.677831 42.293427 110.372407 97.63959l18.235441 62.704324c5.75856 3.007248 11.325169 6.142464 16.827793 9.341665l69.678581-17.083729a112.163959 112.163959 0 0 1 140.508873 43.893026l70.446388 116.514872a107.493127 107.493127 0 0 1-32.375906 144.731817l-48.179955 46.772307a414.616346 414.616346 0 0 1 0 14.204448l48.243939 46.836291c47.092227 31.928018 62.192452 94.952262 32.247938 145.115721z m-213.066733-142.23644l3.391152-31.032242a246.210447 246.210447 0 0 0 0-51.699076l-3.263184-30.904274 93.992502-91.305173-53.554612-88.553862-131.615096 32.311922-23.546113-16.059985a294.134466 294.134466 0 0 0-48.627844-26.809297l-27.513121-11.901025L568.453156 127.968008H455.649356L419.370426 252.736816l-27.705074 11.965009c-16.635841 7.166208-32.951762 16.187953-48.499875 26.745313l-23.610097 15.996001-131.487128-32.247938-53.36266 88.489878 94.056486 91.433141-3.263184 30.968258a247.874031 247.874031 0 0 0 0 51.699076l3.1992 30.904274-93.928518 91.369157 53.554612 88.489878 131.551112-32.311922 23.610097 16.059985c15.292177 10.429393 31.544114 19.451137 48.563859 26.809297l27.577106 11.965009L455.905292 895.776056h112.611848l36.342914-124.768808 27.64109-11.965009c16.699825-7.166208 32.951762-16.187953 48.563859-26.745313l23.546113-15.996001 131.423144 32.247938 53.68258-88.745814-94.184454-91.369157zM512.147232 615.846038c57.329668 0 103.846038-46.516371 103.974006-103.974006 0-57.329668-46.644339-103.974006-103.974006-103.974007S408.173225 454.542364 408.173225 511.872032 454.817564 615.846038 512.147232 615.846038z m0 127.968008c-127.968008 0-231.942014-103.910022-231.942015-231.942014 0-127.968008 103.910022-231.942014 231.942015-231.942015 127.968008 0 231.942014 103.910022 231.942014 232.133967A232.133967 232.133967 0 0 1 512.147232 743.814046z"
+                  p-id="2251"></path>
+              </svg>
+              <!-- 开关按钮 -->
+              <span class="my-radio active" id="myRadio">
+                <i></i>
+              </span>
+              <svg t="1649159678284" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="3376" width="15" height="15">
+                <path
+                  d="M505.4 878.6c-196.7 0-358-150.9-374.9-343.1 1-18.6 16.1-33.4 34.9-33.4 10.8 0 20.5 4.8 26.9 12.4 0.2 0.3 0.5 0.1 0.5-0.7 41.6 44.2 100.5 71.9 166.1 71.9 127.1 0 230.1-103 230.1-230.1 0-66.1-28-125.1-72.6-166.8 0.1-0.1 0.5-0.1 0.3-0.3-7-6.5-11.4-15.7-11.4-26.1 0-19 14.9-34.1 33.7-35.3 192.1 17.1 342.9 178.3 342.9 375 0 208-168.5 376.5-376.5 376.5z"
+                  p-id="3377"></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <div class="navigation">
+      <div class="nav-titleBox co zz">
+        <!-- 标题 -->
+        <div class="co-right">
+          <span class="titleBox-tag">Photo!</span>
+          <h1>
+            life is like a box of chocolates .
+          </h1>
+          <a class="buttom navbtn" href="#next-one">生活就像巧克力
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主要修改部分 -->
+    <div class="content zz">
+      <!-- 主要内容部分 -->
+      <div id="next-one">
+        <div class="content-li li1">
+          <div class="li1-box borderbefore">
+            <span>Sports</span><span class="tag">25</span>
+            <div class="borderbotm"></div>
+            <p>运动</p>
+          </div>
+          <div class="li1-box borderbefore">
+            <span>Foot</span><span class="tag">5</span>
+            <div class="borderbotm"></div>
+            <p>美食</p>
+          </div>
+          <div class="li1-box borderbefore">
+            <span>Travel</span><span class="tag">18</span>
+            <div class="borderbotm"></div>
+            <p>旅行</p>
+          </div>
+        </div>
+        <div class="content-li li2">
+          <h3>
+            <span>生活精彩瞬间</span>
+            <div class="borderbotm"></div>
+            <span>02</span>
+          </h3>
+          <div class="li2-box">
+            <a class="li2-box-item carbox">
+              <img src="./img/pic1.jpg" alt="">
+              <div class="boxitem-title">
+                <h6>精彩瞬间</h6>
+                <span>地点：山西 晋城</span>
+              </div>
+            </a>
+            <a class="li2-box-item carbox" href="https://gitee.com/wttAndroid/book_admin">
+              <img src="./img/pic3.jpg" alt="">
+              <div class="boxitem-title">
+                <h6>精彩瞬间</h6>
+                <span>地点：山西 晋城</span>
+              </div>
+            </a>
+            <a class="li2-box-item carbox" href="https://wttandroid.gitee.io/wttandroid.github.io/">
+              <img src="./img/timg2.gif" alt="">
+              <div class="boxitem-title">
+                <h6>河南 影视城</h6>
+                <span>地点：河南 影视城</span>
+              </div>
+            </a>
+            <a class="li2-box-item carbox" href="https://gitee.com/wttAndroid/xyy_server">
+              <img src="./img/box4.gif" alt="">
+              <div class="boxitem-title">
+                <h6>洛阳牡丹</h6>
+                <span>地点：洛阳 牡丹园</span>
+              </div>
+            </a>
+            <a class="li2-box-item carbox" href="https://gitee.com/wttAndroid/xyy_server">
+              <img src="./img/box3.gif" alt="">
+              <div class="boxitem-title">
+                <h6>北京动物园</h6>
+                <span>地点：北京 动物园</span>
+              </div>
+            </a>
+            <a class="li2-box-item carbox" href="https://gitee.com/wttAndroid/xyy_server">
+              <img src="./img/box1.gif" alt="">
+              <div class="boxitem-title">
+                <h6>太原柳巷</h6>
+                <span>地点：太原 柳巷</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="borderbotm"></div>
+        <div class="carbox copybottm">
+          ©2022 wttandroid
+        </div>
+      </div>
+    </div>
+</body>
+<script src="./js/base.js"></script>
+<script type="text/javascript" src="./js/paper-full.min.js"></script>
+<script type="text/javascript" src="./js/canvas.js"></script>
+
+</html>
